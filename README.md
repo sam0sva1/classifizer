@@ -37,7 +37,7 @@ export function Example({ isChecked }) {
 
       <div className={styledClasses(styles, 'checkbox', isChecked && 'checkbox_active')}>
 
-      <div className={stylizeString(cl('checkbox', isChecked && 'checkbox_active'))}>
+      <div className={stylizeString(classes('checkbox', isChecked && 'checkbox_active'))}>
 
       <div className={stylizeString('checkbox checkbox_active')}>
 
