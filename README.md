@@ -18,13 +18,37 @@ yarn add classifizer
 
 ```jsx
 import React from 'react'
+import {
+  classes,
+  styledClasses,
+  stringStylizer,
+} from 'classifizer';
 
-import { Demo } from 'classifizer'
+import * as styles from './Example.css';
 
-const Example = ({message}) => <Demo type={'warning'}>{message}</Demo>;
+const stylizeString = stringStylizer(styles);
+const stylizeClasses = classesStylizer(styles);
+
+export function Example({ isChecked }) {
+  return (
+    <>
+      <div className={classes(styles['checkbox'], isChecked && styles['checkbox_active'])}>
+
+      <div className={styledClasses(styles, 'checkbox', isChecked && 'checkbox_active')}>
+
+      <div className={stylizeString(cl('checkbox', isChecked && 'checkbox_active'))}>
+
+      <div className={stylizeString('checkbox checkbox_active')}>
+
+      <div className={stylizeClasses(checkbox: { use: true, mod: { active: isChecked } })}>
+    </>
+  );
+}
 
 export default Example;
 ```
+
+### More examples of using inner classBuilder you can find in tests
 
 ## License
 

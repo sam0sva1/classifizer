@@ -1,4 +1,4 @@
-import { TClasses } from '../types/types';
+import { TClasses } from '../types';
 import { classBuilder } from './classBuilder';
 
 export function styledClasses(styles: Record<string, string>, ...args: TClasses[]) {

@@ -41,7 +41,7 @@ classes(
 */
 
 import { classBuilder } from './classBuilder';
-import { TClasses } from '../types/types';
+import { TClasses } from '../types';
 
 export function classes(...args: TClasses[]) {
   if (!args.length) {

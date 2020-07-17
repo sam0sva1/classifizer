@@ -13,9 +13,3 @@ export function stylize(styles: Record<string, string>, classes: string) {
 
   return joined;
 }
-
-export function stylizer(styles: Record<string, string>) {
-  return function stylizeTo(classes: string) {
-    return stylize(styles, classes);
-  };
-}

@@ -1,5 +1,5 @@
 import { isArray, isObject } from './heplers';
-import { TClasses, TRule } from '../types/types';
+import { TClasses, TRule } from '../types';
 
 export function classBuilder(...args: readonly TClasses[]) {
   const classSet: string[] = [];
