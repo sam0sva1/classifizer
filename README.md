@@ -1,4 +1,5 @@
 # classifizer
+### Build complex conditional classes and stylize them with injected css-modules
 
 > 
 
