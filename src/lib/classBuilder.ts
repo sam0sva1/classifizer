@@ -21,7 +21,7 @@ export function classBuilder(...args: readonly TClasses[]) {
         const value = (rule as any)[key];
 
         if (typeof value === 'object') {
-          if (value.use) {
+          if (typeof value.use === 'undefined' || value.use ) {
             classSet.push(key);
           }
 
@@ -45,7 +45,7 @@ export function classBuilder(...args: readonly TClasses[]) {
                 const element = value.elem[curElem];
 
                 if (isObject(element)) {
-                  if (element.use) {
+                  if (typeof element.use === 'undefined' || element.use) {
                     classSet.push(`${key}__${curElem}`);
                   }
 
