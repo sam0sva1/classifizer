@@ -1,5 +1,5 @@
-export * from './classes';
-export * from './styledClasses';
-export * from './stylize';
-export * from './classesStylizer';
-export * from './stringStylizer';
+export { classes } from './classes';
+export { styledClasses } from './styledClasses';
+export { stylize } from './stylize';
+export { classesStylizer } from './classesStylizer';
+export { stringStylizer } from './stringStylizer';
