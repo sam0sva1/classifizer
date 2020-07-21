@@ -33,7 +33,7 @@ export function Example({ isChecked }) {
       // <div class="checkbox checkbox_active">
       <div className={classes('checkbox', isChecked && 'checkbox_active')} />
 
-      // <div class="checkbox checkbox_active">
+      // <div class="checkbox__checker checkbox__checker_active">
       <div className={classes({ checkbox: { use: false, elem: { checker: { mod: { active: isChecked } } } } })} />
 
       // <div class="checkbox checkbox_active">
