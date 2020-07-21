@@ -2,7 +2,7 @@ import test from 'ava';
 
 import { classes } from '../classes';
 
-test('работает правильно', t => {
+test('classes | работает правильно', t => {
   const result = classes(['zoo', 'apartment'], {
     'not-house': true,
     house: {
@@ -38,6 +38,18 @@ test('работает правильно', t => {
     result,
     'zoo apartment not-house house house_red house_green house__cat house__cat_big house__cat_black cat cat_big cat_black house__dog house__dog_small house__dog_white dog dog_small dog_white'
   );
+});
+
+test('возвращает пустую строку, если не предоставить аргументов', t => {
+  const result = classes();
+
+  t.is(result, '');
+});
+
+test('возвращает пустую строку, если передать falsy аргументы', t => {
+  const result = classes(false, undefined, null, '');
+
+  t.is(result, '');
 });
 
 test('принимает массив', t => {
