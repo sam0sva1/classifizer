@@ -34,7 +34,7 @@ export function Example({ isChecked }) {
       <div className={classes('checkbox', isChecked && 'checkbox_active')} />
 
       // <div class="checkbox__checker checkbox__checker_active">
-      <div className={classes({ checkbox: { use: false, elem: { checker: { mod: { active: isChecked } } } } })} />
+      <div className={classes({ checkbox: { elem: { checker: { mod: { active: isChecked } } } } })} />
 
       // <div class="checkbox checkbox_active">
       <div className={classes({ checkbox: { mod: { active: isChecked } } })} />
@@ -46,33 +46,60 @@ export function Example({ isChecked }) {
 }
 ```
 
-### classes
+### styledClasses
+Before a list of class drafts accepts a cssModule object
 
 ```jsx
 import React from 'react'
-import {
-  classes,
-  styledClasses,
-  stringStylizer,
-} from 'classifizer';
+import { styledClasses } from 'classifizer';
 
 import * as styles from './Example.css';
 
-const stylizeString = stringStylizer(styles);
+export function Example({ isChecked }) {
+  return (
+    // <div class="Example__checkbox___Q9Xfp Example__checkbox_active___7qjkJ">
+    <div className={styledClasses(styles, 'checkbox', isChecked && 'checkbox_active')}>
+  );
+}
+```
+
+### stylizeClasses
+Allows to inject a cssModule object to the classes function
+
+```jsx
+import React from 'react'
+import { stylizeClasses } from 'classifizer';
+
+import * as styles from './Example.css';
+
 const stylizeClasses = classesStylizer(styles);
 
 export function Example({ isChecked }) {
   return (
+    <div className={stylizeClasses({ checkbox: { mod: { active: isChecked } } })}>
+  );
+}
+```
+
+### stringStylizer
+Allows to stylize a list of classes in one string
+
+```jsx
+import React from 'react'
+import { stringStylizer } from 'classifizer';
+
+import * as styles from './Example.css';
+
+const stylizeString = stringStylizer(styles);
+
+export function Example({ isChecked }) {
+  return (
     <>
-      <div className={classes(styles['checkbox'], isChecked && styles['checkbox_active'])}>
-
-      <div className={styledClasses(styles, 'checkbox', isChecked && 'checkbox_active')}>
-
+      // <div class="Example__checkbox___Q9Xfp Example__checkbox_active___7qjkJ">
       <div className={stylizeString(classes('checkbox', isChecked && 'checkbox_active'))}>
 
+      // <div class="Example__checkbox___Q9Xfp Example__checkbox_active___7qjkJ">
       <div className={stylizeString('checkbox checkbox_active')}>
-
-      <div className={stylizeClasses(checkbox: { use: true, mod: { active: isChecked } })}>
     </>
   );
 }
