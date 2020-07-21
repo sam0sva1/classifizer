@@ -1,4 +1,4 @@
-export function stylize(styles: Record<string, string>, classes: string) {
+export function stylize(styles: Record<string, string>, classes: string): string {
   if (typeof classes !== 'string') {
     return '';
   }

@@ -1,7 +1,7 @@
 import { isArray, isObject } from './heplers';
 import { TClasses, TRule } from '../types';
 
-export function classBuilder(...args: readonly TClasses[]) {
+export function classBuilder(...args: readonly TClasses[]): string[] {
   const classSet: string[] = [];
 
   args.forEach((rule: TClasses) => {
