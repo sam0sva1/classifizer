@@ -1,6 +1,6 @@
 {
   "name": "classifizer",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "CSS classes builder & CSS-modules stylizer",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
