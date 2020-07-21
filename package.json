@@ -1,7 +1,7 @@
 {
   "name": "classifizer",
   "version": "1.1.0",
-  "description": "a typescript-starter project",
+  "description": "CSS classes builder & CSS-modules stylizer",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
