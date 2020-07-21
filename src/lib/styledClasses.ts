@@ -1,7 +1,10 @@
 import { TClasses } from '../types';
 import { classBuilder } from './classBuilder';
 
-export function styledClasses(styles: Record<string, string>, ...args: TClasses[]): string {
+export function styledClasses(
+  styles: Record<string, string>,
+  ...args: TClasses[]
+): string {
   if (!args.length) {
     return '';
   }

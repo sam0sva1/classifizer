@@ -1,4 +1,7 @@
-export function stylize(styles: Record<string, string>, classes: string): string {
+export function stylize(
+  styles: Record<string, string>,
+  classes: string
+): string {
   if (typeof classes !== 'string') {
     return '';
   }
@@ -8,7 +11,9 @@ export function stylize(styles: Record<string, string>, classes: string): string
   }
 
   const splited = classes.split(' ');
-  const styled = splited.map((oneClass: string) => styles[oneClass] || oneClass);
+  const styled = splited.map(
+    (oneClass: string) => styles[oneClass] || oneClass
+  );
   const joined = styled.join(' ');
 
   return joined;

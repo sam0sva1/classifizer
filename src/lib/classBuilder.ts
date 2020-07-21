@@ -17,7 +17,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
     }
 
     if (isObject(rule)) {
-      Object.keys(rule).forEach((key) => {
+      Object.keys(rule).forEach(key => {
         const value = (rule as any)[key];
 
         if (typeof value === 'object') {
@@ -31,7 +31,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
           // mod
           if (value.mod) {
             if (isObject(value.mod)) {
-              Object.keys(value.mod).forEach((curMod) => {
+              Object.keys(value.mod).forEach(curMod => {
                 if (value.mod[curMod]) {
                   classSet.push(`${key}_${curMod}`);
                 }
@@ -44,7 +44,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
           // elem
           if (value.elem) {
             if (isObject(value.elem)) {
-              Object.keys(value.elem).forEach((curElem) => {
+              Object.keys(value.elem).forEach(curElem => {
                 const element = value.elem[curElem];
 
                 if (isObject(element)) {
@@ -61,7 +61,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
                           const { mod: elemMod } = element;
 
                           if (isObject(elemMod)) {
-                            Object.keys(elemMod).forEach((curMod) => {
+                            Object.keys(elemMod).forEach(curMod => {
                               if (elemMod[curMod]) {
                                 classSet.push(`${key}__${curElem}_${curMod}`);
                               }
@@ -75,7 +75,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
                       classSet.push(curElem);
 
                       if (isObject(mod)) {
-                        Object.keys(mod).forEach((curMod) => {
+                        Object.keys(mod).forEach(curMod => {
                           if (mod[curMod]) {
                             classSet.push(`${curElem}_${curMod}`);
                           }
@@ -90,7 +90,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
                     const { mod } = element;
 
                     if (isObject(mod)) {
-                      Object.keys(mod).forEach((curMod) => {
+                      Object.keys(mod).forEach(curMod => {
                         if (mod[curMod]) {
                           classSet.push(`${key}__${curElem}_${curMod}`);
                         }
@@ -116,7 +116,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
     }
 
     if (isArray(rule)) {
-      const result = classBuilder(...rule as (string | TRule)[]);
+      const result = classBuilder(...(rule as (string | TRule)[]));
       classSet.push(...result);
     }
   });
