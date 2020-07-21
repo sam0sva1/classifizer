@@ -17,6 +17,37 @@ yarn add classifizer
 
 ## Usage
 
+### classes
+A function that accepts strings, arrays, objects.
+Omits empty strings, null and undefined.
+
+```jsx
+import React from 'react'
+import { classes } from 'classifizer';
+
+export function Example({ isChecked }) {
+  const isChecked = true;
+
+  return (
+    <>
+      // <div class="checkbox checkbox_active">
+      <div className={classes('checkbox', isChecked && 'checkbox_active')} />
+
+      // <div class="checkbox checkbox_active">
+      <div className={classes({ checkbox: { use: false, elem: { checker: { mod: { active: isChecked } } } } })} />
+
+      // <div class="checkbox checkbox_active">
+      <div className={classes({ checkbox: { mod: { active: isChecked } } })} />
+
+      // <div class="checkbox_active">
+      <div className={classes({ checkbox: { use: false, mod: { active: isChecked } } })} />
+    </>
+  );
+}
+```
+
+### classes
+
 ```jsx
 import React from 'react'
 import {
@@ -45,8 +76,6 @@ export function Example({ isChecked }) {
     </>
   );
 }
-
-export default Example;
 ```
 
 ### More examples of using inner classBuilder you can find in tests
