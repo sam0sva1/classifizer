@@ -63,12 +63,12 @@ export function Example({ isChecked }) {
 }
 ```
 
-### stylizeClasses
+### classesStylizer
 Allows to inject a cssModule object to the classes function
 
 ```jsx
 import React from 'react'
-import { stylizeClasses } from 'classifizer';
+import { classesStylizer } from 'classifizer';
 
 import * as styles from './Example.css';
 
