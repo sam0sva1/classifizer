@@ -48,10 +48,6 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
                 const element = value.elem[curElem];
 
                 if (isObject(element)) {
-                  // if (typeof element.use === 'undefined' || element.use) {
-                  //   classSet.push(`${key}__${curElem}`);
-                  // }
-
                   if (
                     (element.independent && element.use) ||
                     (!element.independent &&
