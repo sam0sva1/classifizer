@@ -1,4 +1,4 @@
-import { isArray, isObject } from './heplers';
+import { isArray, isObject } from './helpers';
 import { TClasses, TRule } from '../types';
 
 export function classBuilder(...args: readonly TClasses[]): string[] {
@@ -9,18 +9,17 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
       return;
     }
 
-    const ruleType = typeof rule;
-    if (ruleType === 'string') {
-      classSet.push(rule as string);
+    if (typeof rule === 'string') {
+      classSet.push(rule);
 
       return;
     }
 
     if (isObject(rule)) {
       Object.keys(rule).forEach(key => {
-        const value = (rule as any)[key];
+        const value = rule[key];
 
-        if (typeof value === 'object') {
+        if (value !== null && typeof value === 'object') {
           if (
             (value.elem && value.use) ||
             (!value.elem && (typeof value.use === 'undefined' || value.use))
