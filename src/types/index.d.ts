@@ -1,5 +1,5 @@
 export type TModifier = {
-  readonly [key: string]: any;
+  readonly [key: string]: unknown;
 };
 
 export type TRule = {

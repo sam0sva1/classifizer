@@ -1,4 +1,4 @@
-import { isArray, isObject } from './heplers';
+import { isArray, isObject } from './helpers';
 import { TClasses, TRule } from '../types';
 
 export function classBuilder(...args: readonly TClasses[]): string[] {
@@ -9,18 +9,18 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
       return;
     }
 
-    const ruleType = typeof rule;
-    if (ruleType === 'string') {
-      classSet.push(rule as string);
+    if (typeof rule === 'string') {
+      classSet.push(rule);
 
       return;
     }
 
     if (isObject(rule)) {
-      Object.keys(rule).forEach(key => {
-        const value = (rule as any)[key];
+      const ruleObj = rule;
+      Object.keys(ruleObj).forEach(key => {
+        const value = ruleObj[key];
 
-        if (typeof value === 'object') {
+        if (value !== null && typeof value === 'object') {
           if (
             (value.elem && value.use) ||
             (!value.elem && (typeof value.use === 'undefined' || value.use))
@@ -30,22 +30,24 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
 
           // mod
           if (value.mod) {
-            if (isObject(value.mod)) {
-              Object.keys(value.mod).forEach(curMod => {
-                if (value.mod[curMod]) {
+            const valueMod = value.mod;
+            if (isObject(valueMod)) {
+              Object.keys(valueMod).forEach(curMod => {
+                if (valueMod[curMod]) {
                   classSet.push(`${key}_${curMod}`);
                 }
               });
             } else {
-              classSet.push(`${key}_${value.mod}`);
+              classSet.push(`${key}_${valueMod}`);
             }
           }
 
           // elem
           if (value.elem) {
-            if (isObject(value.elem)) {
-              Object.keys(value.elem).forEach(curElem => {
-                const element = value.elem[curElem];
+            const valueElem = value.elem;
+            if (isObject(valueElem)) {
+              Object.keys(valueElem).forEach(curElem => {
+                const element = valueElem[curElem];
 
                 if (isObject(element)) {
                   if (
@@ -61,12 +63,11 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
 
                   if (element.independent) {
                     if (element.mod) {
-                      const { mod } = element;
+                      const mod = element.mod;
 
                       if (element.duplicate) {
-                        if (element.mod) {
-                          const { mod: elemMod } = element;
-
+                        const elemMod = element.mod;
+                        if (elemMod) {
                           if (isObject(elemMod)) {
                             Object.keys(elemMod).forEach(curMod => {
                               if (elemMod[curMod]) {
@@ -94,7 +95,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
                       classSet.push(curElem);
                     }
                   } else if (element.mod) {
-                    const { mod } = element;
+                    const mod = element.mod;
 
                     if (isObject(mod)) {
                       Object.keys(mod).forEach(curMod => {
@@ -111,7 +112,7 @@ export function classBuilder(...args: readonly TClasses[]): string[] {
                 }
               });
             } else {
-              classSet.push(`${key}__${value.elem}`);
+              classSet.push(`${key}__${valueElem}`);
             }
           }
         } else if (value) {

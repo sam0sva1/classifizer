@@ -10,8 +10,8 @@ export function stylize(
     return '';
   }
 
-  const splited = classes.split(' ');
-  const styled = splited.map(
+  const parts = classes.split(' ');
+  const styled = parts.map(
     (oneClass: string) => styles[oneClass] || oneClass
   );
   const joined = styled.join(' ');
